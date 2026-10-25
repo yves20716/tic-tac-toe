@@ -19,7 +19,9 @@
         <script>
 		var count = 0; 
 		var player = 1;
+		var gameOver = false;
 		function determine(id) {
+			if (gameOver) return;
 			var grids = [];
 			var isLine = false;
 			var currentSelection = document.getElementById(id);		
@@ -58,6 +60,7 @@
 			}
 			
 			if (isLine == true) {			
+				gameOver = true;
 				if (currentSelection.innerHTML == "O") {
 					setTimeout(() => { 
 						window.alert("O贏了！"); 
@@ -71,6 +74,7 @@
 					}, 300) ;		
 				}
 			} else if (count == 9) {
+				gameOver = true;
 				setTimeout(() => { 
 					window.alert("平手"); 
 					location.reload();
